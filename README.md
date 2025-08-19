@@ -59,7 +59,7 @@ src/curobo/content/assets/object/DGN_2k
 Alternatively, new object assets can be pre-processed using [MeshProcess](https://github.com/JYChen18/MeshProcess).
    
 4. **Synthesize grasp poses**: Each synthesized grasping data point includes a pre-grasp, a grasp, and a squeeze pose. 
-```
+```bash
 # Single GPU version
 CUDA_VISIBLE_DEVICES=7 python example_grasp/plan_batch_env.py -c sim_shadow/fc.yml -w 40 
 
@@ -68,9 +68,12 @@ CUDA_VISIBLE_DEVICES=7 python example_grasp/plan_batch_env.py -c sim_shadow/fc.y
 
 # Multiple GPU version
 python example_grasp/multi_gpu.py -c sim_shadow/fc.yml -t grasp -g 0 1 2 3 
+
+# from mingrui
+python example_grasp/multi_gpu.py -c sim_allegro/tabletop.yml -t grasp -w 40 -g 0 1 2 3 4 5 6 7
 ```
 We can also **synthesize approaching trajectories** that are collision-free with the table for hands mounted on arms, e.g., UR10e+Shadow Hand systems.
- ```
+ ```bash
 # Single GPU version
 CUDA_VISIBLE_DEVICES=7 python example_grasp/plan_mogen_batch.py -c sim_shadow/tabletop.yml -t grasp_and_mogen
 

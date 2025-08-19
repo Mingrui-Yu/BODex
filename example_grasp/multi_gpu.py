@@ -77,6 +77,14 @@ if __name__ == "__main__":
     ):
         all_obj_num = manip_config_data["world"]["end"] - manip_config_data["world"]["start"]
         original_start = manip_config_data["world"]["start"]
+    elif (
+        manip_config_data["world"]["start"] is not None
+        and manip_config_data["world"]["end"] is None
+    ):
+        original_start = manip_config_data["world"]["start"]
+        all_obj_num = len(
+            glob(join_path(get_assets_path(), manip_config_data["world"]["template_path"]))
+        ) - original_start
     else:
         all_obj_num = len(
             glob(join_path(get_assets_path(), manip_config_data["world"]["template_path"]))
